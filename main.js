@@ -29,6 +29,7 @@ b.addEventListener("click", function () {
             // console.log(this.classList[0]);
             // console.log("star");
             rewrite();
+            recolor();
         });
         li.appendChild(star);
 
@@ -37,6 +38,7 @@ b.addEventListener("click", function () {
         done.classList.add("done");
         done.addEventListener("change", function () {
             rewrite();
+            recolor();
         });
         li.appendChild(done);
 
@@ -50,6 +52,7 @@ b.addEventListener("click", function () {
             }
             hideParent(this);
             rewrite();
+            recolor();
         });
         li.appendChild(rem);
 
@@ -118,6 +121,7 @@ b.addEventListener("click", function () {
         ul.appendChild(li);
         document.getElementsByClassName("input")[0].value = "";
         rewrite();
+        recolor();
         i.focus();
     } else {
         i.setAttribute("placeholder", "empty input");
@@ -194,7 +198,7 @@ function editing() {
             element.childNodes[4].style.display = "none";
             element.childNodes[5].style.display = "inline-block";
         } else {
-            console.log(element.childNodes);
+            // console.log(element.childNodes);
             element.childNodes[4].style.display = "none";
         }
     });
@@ -213,7 +217,7 @@ function ifEditing() {
     let flag = 0;
     clist.forEach(element => {
         if (element.getAttribute('editing') === "true") {
-            console.log("true")
+            // console.log("true")
             flag++;
         }
     })
@@ -224,16 +228,55 @@ function ifEditing() {
     }
 }
 
+function whatEditing() {
+    let clist = ul.childNodes;
+    let flag = [];
+    clist.forEach(element => {
+        if (element.getAttribute('editing') === "true") {
+            // console.log("found");
+            // console.log(element)
+            flag.push(element);
+        }
+    })
+    return flag;
+}
+
 function handle(e) {
     if (e.keyCode === 13) {
         // e.preventDefault(); // Ensure it is only this code that runs
         if (ifEditing()) {
             let clist = document.getElementsByClassName("add")[0].childNodes
-            console.log(clist);
+            // console.log(clist);
             clist[5].click();
         } else {
             b.click();
-            console.log(ifEditing())
+            // console.log(ifEditing())
         }
     }
+}
+
+i.addEventListener("input", function () {
+    // console.log("changed");
+    if (ifEditing()) {
+        // console.log("changed2");
+        // console.log(whatEditing());
+        // console.log(whatEditing()[0].childNodes[0].innerHTML);
+        // console.log(i.value);
+        whatEditing()[0].childNodes[0].innerHTML = i.value
+        // console.log(whatEditing()[0].childNodes[0].innerHTML);
+    }
+});
+
+function recolor () {
+    let clist = ul.childNodes;
+    let flag = 0;
+    clist.forEach(function (element) {
+        if ((flag % 2) === 0) {
+            element.style.backgroundColor = "#bababa";
+            flag++;
+        } else {
+            element.style.backgroundColor = "#dedede";
+            flag++;
+        }
+    });
 }
