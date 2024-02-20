@@ -43,6 +43,11 @@ b.addEventListener("click", function () {
         let rem = document.createElement("button");
         rem.classList.add("rem");
         rem.addEventListener("click", function () {
+            if (this.parentElement.getAttribute('editing') === "true") {
+                let clist = document.getElementsByClassName("add")[0].childNodes
+                clist[6].click();
+                editing2()
+            }
             hideParent(this);
             rewrite();
         });
@@ -59,6 +64,9 @@ b.addEventListener("click", function () {
             let olde = this;
             let old = this.parentElement.childNodes[0].innerHTML
             i.value = old;
+            
+
+            
 
             let ok = document.createElement("button");
             ok.classList.add("ok");
@@ -92,7 +100,7 @@ b.addEventListener("click", function () {
             a.appendChild(can);
         });
         li.appendChild(edit);
-        
+
         let wait = document.createElement("button");
         wait.classList.add("wait");
         wait.style.display = "none";
@@ -182,7 +190,7 @@ function editing() {
     let clist = ul.childNodes;
     clist.forEach(element => {
         if (element.getAttribute('editing') === "true") {
-            console.log("1")
+            // console.log("1")
             element.childNodes[4].style.display = "none";
             element.childNodes[5].style.display = "inline-block";
         } else {
@@ -198,4 +206,34 @@ function editing2() {
         element.childNodes[4].style.display = "inline-block";
         element.childNodes[5].style.display = "none";
     });
+}
+
+function ifEditing() {
+    let clist = ul.childNodes;
+    let flag = 0;
+    clist.forEach(element => {
+        if (element.getAttribute('editing') === "true") {
+            console.log("true")
+            flag++;
+        }
+    })
+    if (flag === 0) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function handle(e) {
+    if (e.keyCode === 13) {
+        // e.preventDefault(); // Ensure it is only this code that runs
+        if (ifEditing()) {
+            let clist = document.getElementsByClassName("add")[0].childNodes
+            console.log(clist);
+            clist[5].click();
+        } else {
+            b.click();
+            console.log(ifEditing())
+        }
+    }
 }
