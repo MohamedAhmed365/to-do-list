@@ -108,14 +108,14 @@ li {
     /* margin-right: 120px; */
 }
 
-.unstar , .star , .rem , .done {
+.unstar , .star , .rem , .done , .edit , .ok , .can , .wait {
     position: absolute;
     width: 40px;
     height: 24px;
     /* margin-right: 120px; */
 }
 
-.rem , .unstar , .star {
+.rem , .unstar , .star , .edit , .ok , .can , .wait {
     /* margin: 0; */
     padding: 0;
     border: none;
@@ -128,20 +128,41 @@ li {
 
 .unstar {
     background-image: url(../img/unstar.png);
-    right: 400px;
+    right: 270px;
 }
 
 .star {
     background-image: url(../img/star.png);
-    right: 400px;
+    right: 270px;
 }
 
 .rem {
     background-image: url(../img/rem.png);
-    right: 90px;
+    right: 60px;
 }
 
 .done {
-    right: 230px;
+    right: 160px;
 
+}
+
+.edit {
+    right: 380px;
+    background-image: url(../img/edit.png);
+}
+
+.ok {
+    background-image: url(../img/ok.png);
+    background-size: 140%;
+    right: 13.5%;
+}
+
+.can {
+    background-image: url(../img/can.png);
+    right: 6%;
+}
+
+.wait {
+    background-image: url(../img/wait.png);
+    right: 380px;
 }
