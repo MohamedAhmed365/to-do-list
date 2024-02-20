@@ -1,0 +1,147 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    /* font-size: 100%; */
+    vertical-align: baseline;
+    background: transparent;
+    position: relative;
+}
+
+ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.header {
+    background-color: rgb(44, 44, 44);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 99;
+
+    display: flex;
+    align-items: center;
+}
+
+.title {
+    color: #ffffff;
+    font-size: xx-large;
+    margin-left: 10px;
+}
+
+.content , .add {
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid black;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.content {
+    width: calc(100% - 90px);
+    height: calc(100vh - 54px - 110px);
+    margin-top: calc(50px + 30px);
+    scroll-behavior: auto;
+    overflow: auto;
+}
+
+.add {
+    width: calc(100% - 90px);
+    height: calc(55px);
+    margin-top: calc(12px);
+
+    display: flex;
+    align-items: center;
+    justify-items: center;
+
+}
+
+.input {
+    background-color: #cecece;
+    width: 70%;
+    height: 30px;
+    margin-left: 10%;
+    margin-right: 5%;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+}
+
+.addButton {
+    width: 60px;
+    height: 35px;
+}
+
+li {
+    width: calc(100% - 40px);
+    height: fit-content;
+    background-color: #cecece;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    margin-bottom: 2px;
+
+    position: relative;
+}
+
+.doName {
+    max-width: 500px;
+    max-height: 60px;
+
+    padding: 10px;
+    
+    /* display: flex; */
+    position: absolute;
+    left:  20px;
+    /* background-color: #fff; */
+    /* height: 20px; */
+    
+    /* margin-right: 120px; */
+}
+
+.unstar , .star , .rem , .done {
+    position: absolute;
+    width: 40px;
+    height: 24px;
+    /* margin-right: 120px; */
+}
+
+.rem , .unstar , .star {
+    /* margin: 0; */
+    padding: 0;
+    border: none;
+    background: none;    
+    background-size: contain;
+    background-position-x: center;
+    background-position-y: center;
+    background-repeat: no-repeat;
+}
+
+.unstar {
+    background-image: url(../img/unstar.png);
+    right: 400px;
+}
+
+.star {
+    background-image: url(../img/star.png);
+    right: 400px;
+}
+
+.rem {
+    background-image: url(../img/rem.png);
+    right: 90px;
+}
+
+.done {
+    right: 230px;
+
+}
