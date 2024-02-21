@@ -64,12 +64,13 @@ b.addEventListener("click", function () {
             i.style.marginLeft = "7%";
             this.parentElement.setAttribute("editing", "true");
             editing()
+            recolor()
             let olde = this;
             let old = this.parentElement.childNodes[0].innerHTML
             i.value = old;
-            
 
-            
+
+
 
             let ok = document.createElement("button");
             ok.classList.add("ok");
@@ -78,6 +79,7 @@ b.addEventListener("click", function () {
                     olde.parentElement.childNodes[0].innerHTML = i.value;
                     olde.parentElement.setAttribute("editing", "false");
                     editing2()
+                    recolor()
                     i.style.marginLeft = "10%";
                     i.value = "";
                     b.style.display = "inline-block";
@@ -93,6 +95,7 @@ b.addEventListener("click", function () {
             can.addEventListener("click", function () {
                 olde.parentElement.setAttribute("editing", "false");
                 editing2()
+                recolor()
                 i.style.marginLeft = "10%";
                 i.value = "";
                 b.style.display = "inline-block";
@@ -169,6 +172,18 @@ function newList() {
             if (element.childNodes[1].classList.contains("unstar")) {
                 // console.log("4")
                 if (!element.childNodes[2].checked) {
+                    // console.log("5")
+                    newList.push(element);
+                }
+            }
+        }
+    });
+    clist.forEach(element => {
+        if (element.style.display !== 'none') {
+            // console.log("3")
+            if (element.childNodes[1].classList.contains("star")) {
+                // console.log("4")
+                if (element.childNodes[2].checked) {
                     // console.log("5")
                     newList.push(element);
                 }
@@ -267,16 +282,26 @@ i.addEventListener("input", function () {
     }
 });
 
-function recolor () {
+function recolor() {
     let clist = ul.childNodes;
     let flag = 0;
     clist.forEach(function (element) {
         if ((flag % 2) === 0) {
-            element.style.backgroundColor = "#bababa";
-            flag++;
+            if (element.getAttribute('editing') === "true") {
+                element.style.backgroundColor = "#2522c6";
+                flag++;
+            } else {
+                element.style.backgroundColor = "#bababa";
+                flag++;
+            }
         } else {
-            element.style.backgroundColor = "#dedede";
-            flag++;
+            if (element.getAttribute('editing') === "true") {
+                element.style.backgroundColor = "#2522c6";
+                flag++;
+            } else {
+                element.style.backgroundColor = "#dedede";
+                flag++;
+            }
         }
     });
 }

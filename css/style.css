@@ -84,7 +84,7 @@ ul, li {
 li {
     width: calc(100% - 40px);
     height: fit-content;
-    background-color: #bababa;
+    background-color: #2522c6;
     display: flex;
     align-items: center;
     padding: 20px;
